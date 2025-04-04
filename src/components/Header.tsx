@@ -1,4 +1,4 @@
-import image from '../data/1743765262296.jpg';
+import image from '../data/firofiro.jpg';
 import React from 'react';
 import { Globe, Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
 import { PersonalInfo } from '../data/cv';
