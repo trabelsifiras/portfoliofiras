@@ -2,7 +2,7 @@ import React from 'react';
 import { Globe, Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
 import { PersonalInfo } from '../data/cv';
 import { motion } from 'framer-motion';
-
+import image from '../data/1743765262296.jpg';
 interface HeaderProps {
   personalInfo: PersonalInfo;
   language: string;
@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ personalInfo, language, onLanguageChang
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          src="src/data/1743765262296.jpg"
+          src={image}
           alt="Profile"
           className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
         />
