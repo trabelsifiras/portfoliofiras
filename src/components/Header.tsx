@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ personalInfo, language, onLanguageChang
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=180&h=180&fit=crop"
+          src="src/data/1743765262296.jpg"
           alt="Profile"
           className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
         />
