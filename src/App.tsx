@@ -11,7 +11,7 @@ function App() {
   const data = cvData[language];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-black">
       <Header 
         personalInfo={data.personalInfo}
         language={language}
