@@ -25,6 +25,7 @@ const item = {
 const Education: React.FC<EducationProps> = ({ education }) => {
   return (
       <motion.section
+          id="education"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}

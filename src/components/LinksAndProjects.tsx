@@ -89,6 +89,7 @@ const renderStars = (rating: number) => {
 const LinksAndProjects: React.FC<LinksAndProjectsProps> = ({ items }) => {
     return (
         <motion.section
+            id="links-and-projects"
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}

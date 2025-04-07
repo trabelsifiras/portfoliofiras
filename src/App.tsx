@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { cvData } from './data/cv';
 import Header from './components/Header';
 import Skills from './components/Skills';
@@ -6,6 +6,7 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import { motion } from 'framer-motion';
 import LinksAndProjects from "./components/LinksAndProjects.tsx";
+import Navigation from "./components/Navigation.tsx";
 
 function App() {
   const [language, setLanguage] = useState('en');
@@ -37,6 +38,7 @@ function App() {
         language={language}
         onLanguageChange={setLanguage}
       />
+        <Navigation/>
       <motion.main 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

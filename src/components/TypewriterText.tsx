@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 
 interface TypewriterTextProps {
     text: string;
@@ -9,7 +8,6 @@ interface TypewriterTextProps {
 
 const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0, className = '' }) => {
     const [displayText, setDisplayText] = useState('');
-    const [cursorVisible, setCursorVisible] = useState(true);
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -26,21 +24,14 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0, classN
             return () => clearInterval(interval);
         }, delay);
 
-        const cursorInterval = setInterval(() => {
-            setCursorVisible(prev => !prev);
-        }, 500);
-
-        return () => {
-            clearTimeout(timeout);
-            clearInterval(cursorInterval);
-        };
+        return () => clearTimeout(timeout);
     }, [text, delay]);
 
     return (
         <div className={`font-mono ${className}`}>
             <span className="text-green-400">&gt; </span>
             <span className="text-green-400">{displayText}</span>
-            {cursorVisible && <span className="text-green-400">▋</span>}
+            <span className="text-green-400">|</span>
         </div>
     );
 };

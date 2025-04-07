@@ -25,6 +25,7 @@ const item = {
 const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
   return (
       <motion.section
+          id="experience"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}

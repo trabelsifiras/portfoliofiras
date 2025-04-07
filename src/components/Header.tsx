@@ -1,4 +1,4 @@
-import image from '../data/firofiro.jpg';
+import image from '../data/avatar.png';
 import React from 'react';
 import { Globe, Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
 import { PersonalInfo } from '../data/cv';
@@ -21,12 +21,12 @@ const Header: React.FC<HeaderProps> = ({ personalInfo, language, onLanguageChang
       >
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
           <motion.img
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+              initial={{scale: 0, rotate: -180}}
+              animate={{scale: 1, rotate: 0}}
+              transition={{duration: 0.8, type: "spring", bounce: 0.4}}
               src={image}
               alt="Profile"
-              className="w-32 h-32 rounded-full border-4 border-green-400 shadow-lg shadow-green-400/20 hover:scale-105 transition-transform duration-300"
+              className="w-52 h-52 shadow-green-400/20 hover:scale-105 transition-transform duration-300 object-cover"
           />
 
           <div className="flex-1">
@@ -44,37 +44,37 @@ const Header: React.FC<HeaderProps> = ({ personalInfo, language, onLanguageChang
               </div>
 
               <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
+                  initial={{opacity: 0, y: 20}}
+                  animate={{opacity: 1, y: 0}}
+                  transition={{duration: 0.5, delay: 0.5}}
                   className="flex flex-col md:flex-row items-center gap-6 justify-center md:justify-start"
               >
                 <div className="space-y-2 bg-gray-900/50 p-4 rounded-lg border border-green-400">
                   <motion.div
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{scale: 1.05}}
                       className="flex items-center gap-2"
                   >
-                    <MapPin size={16} className="text-green-400" />
+                    <MapPin size={16} className="text-green-400"/>
                     <TypewriterText
                         text={personalInfo.address}
                         delay={1500}
                     />
                   </motion.div>
                   <motion.div
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{scale: 1.05}}
                       className="flex items-center gap-2"
                   >
-                    <Phone size={16} className="text-green-400" />
+                    <Phone size={16} className="text-green-400"/>
                     <TypewriterText
                         text={personalInfo.mobile}
                         delay={2000}
                     />
                   </motion.div>
                   <motion.div
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{scale: 1.05}}
                       className="flex items-center gap-2"
                   >
-                    <Mail size={16} className="text-green-400" />
+                    <Mail size={16} className="text-green-400"/>
                     <TypewriterText
                         text={personalInfo.email}
                         delay={2500}
@@ -84,27 +84,27 @@ const Header: React.FC<HeaderProps> = ({ personalInfo, language, onLanguageChang
 
                 <div className="flex items-center gap-4 bg-gray-900/50 p-4 rounded-lg border border-green-400">
                   <motion.a
-                      whileHover={{ scale: 1.2, rotate: 5 }}
-                      whileTap={{ scale: 0.9 }}
+                      whileHover={{scale: 1.2, rotate: 5}}
+                      whileTap={{scale: 0.9}}
                       href={personalInfo.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-green-400 hover:text-green-300 transition-colors"
                   >
-                    <Github size={20} />
+                    <Github size={20}/>
                   </motion.a>
                   <motion.a
-                      whileHover={{ scale: 1.2, rotate: -5 }}
-                      whileTap={{ scale: 0.9 }}
+                      whileHover={{scale: 1.2, rotate: -5}}
+                      whileTap={{scale: 0.9}}
                       href={personalInfo.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-green-400 hover:text-green-300 transition-colors"
                   >
-                    <Linkedin size={20} />
+                    <Linkedin size={20}/>
                   </motion.a>
                   <div className="flex items-center gap-2 ml-4">
-                    <Globe size={16} className="animate-spin-slow text-green-400" />
+                    <Globe size={16} className="animate-spin-slow text-green-400"/>
                     <select
                         value={language}
                         onChange={(e) => onLanguageChange(e.target.value)}

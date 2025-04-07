@@ -25,6 +25,7 @@ const item = {
 const Skills: React.FC<SkillsProps> = ({ skills }) => {
   return (
       <motion.section
+          id="skills"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
