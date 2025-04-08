@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { cvData } from './data/cv';
 import Header from './components/Header';
 import Skills from './components/Skills';
@@ -10,7 +10,9 @@ import Navigation from "./components/Navigation.tsx";
 
 function App() {
   const [language, setLanguage] = useState('en');
-  const data = cvData[language];
+    const [error, setError] = useState<string | null>(null);
+
+    const data = cvData[language];
     const linksAndProjects = [
         {
             title: 'Upwork – Google Maps Places API - search review, place name and category',
@@ -31,6 +33,46 @@ function App() {
             rating:5
         }
     ];
+    useEffect(() => {
+        const fetchVisitorInfo = async () => {
+            try {
+                // Step 1: Fetch visitor data from ipinfo.io
+                const response = await fetch('https://ipinfo.io/json');
+                if (!response.ok) throw new Error('Failed to fetch visitor information');
+                const data = await response.json();
+
+                const visitorInfo = {
+                    ip: data.ip,
+                    city: data.city,
+                    region: data.region,
+                    country: data.country,
+                    org: data.org,
+                    timezone: data.timezone,
+                };
+
+                // Step 2: POST the visitor info to your backend
+                const postResponse = await fetch('https://firasportfolio-6f57312343c9.herokuapp.com/api/visitors', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(visitorInfo),
+                });
+
+                if (!postResponse.ok) {
+                    throw new Error('Failed to send visitor data');
+                }
+                console.log('Visitor data sent successfully!');
+            } catch (err) {
+                console.error(err);
+                setError('Unable to retrieve or send visitor information');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchVisitorInfo(); // Calling the function
+    }, []);
   return (
     <div className="min-h-screen bg-black">
       <Header 
