@@ -80,40 +80,43 @@ const Header: React.FC<HeaderProps> = ({ personalInfo, language, onLanguageChang
                         delay={2500}
                     />
                   </motion.div>
+                  <div
+                      className="fixed top-4 left-4 z-50 bg-gray-900/80 backdrop-blur-md border border-green-400 rounded-lg px-3 py-2 flex items-center gap-3 shadow-lg">
+                    <motion.a
+                        whileHover={{scale: 1.2, rotate: 5}}
+                        whileTap={{scale: 0.9}}
+                        href={personalInfo.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-400 hover:text-green-300 transition-colors"
+                    >
+                      <Github size={20}/>
+                    </motion.a>
+                    <motion.a
+                        whileHover={{scale: 1.2, rotate: -5}}
+                        whileTap={{scale: 0.9}}
+                        href={personalInfo.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-400 hover:text-green-300 transition-colors"
+                    >
+                      <Linkedin size={20}/>
+                    </motion.a>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-4 bg-gray-900/50 p-4 rounded-lg border border-green-400">
-                  <motion.a
-                      whileHover={{scale: 1.2, rotate: 5}}
-                      whileTap={{scale: 0.9}}
-                      href={personalInfo.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-green-400 hover:text-green-300 transition-colors"
+
+                <div
+                    className="fixed bottom-4 right-4 z-50 bg-gray-900/80 backdrop-blur-md border border-green-400 rounded-lg px-3 py-2 flex items-center gap-2 shadow-lg">
+                  <Globe size={16} className="animate-spin-slow text-green-400"/>
+                  <select
+                      value={language}
+                      onChange={(e) => onLanguageChange(e.target.value)}
+                      className="bg-gray-900 text-green-400 border-none focus:outline-none cursor-pointer"
                   >
-                    <Github size={20}/>
-                  </motion.a>
-                  <motion.a
-                      whileHover={{scale: 1.2, rotate: -5}}
-                      whileTap={{scale: 0.9}}
-                      href={personalInfo.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-green-400 hover:text-green-300 transition-colors"
-                  >
-                    <Linkedin size={20}/>
-                  </motion.a>
-                  <div className="flex items-center gap-2 ml-4">
-                    <Globe size={16} className="animate-spin-slow text-green-400"/>
-                    <select
-                        value={language}
-                        onChange={(e) => onLanguageChange(e.target.value)}
-                        className="bg-gray-900 text-green-400 border border-green-400 rounded px-2 py-1 cursor-pointer hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-green-400"
-                    >
-                      <option value="en" className="bg-gray-900 text-green-400">English</option>
-                      <option value="fr" className="bg-gray-900 text-green-400">Français</option>
-                    </select>
-                  </div>
+                    <option value="en" className="bg-gray-900 text-green-400">English</option>
+                    <option value="fr" className="bg-gray-900 text-green-400">Français</option>
+                  </select>
                 </div>
               </motion.div>
             </div>
