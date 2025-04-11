@@ -86,6 +86,10 @@ export const cvData: Record<string, CVData> = {
       {
         category: "Testing and Automation Tools",
         items: ["Maven", "Selenium", "Jsoup"]
+      },
+      {
+        category: "Languages",
+        items: ["English", "French"]
       }
     ],
     experience: [
@@ -130,6 +134,46 @@ export const cvData: Record<string, CVData> = {
               "Authored comprehensive documentation and conducted technical team training to ensure smooth adoption of new features."
             ],
             technicalEnvironment: "Java · Groovy · JavaFX · Git · Bitbucket · HP ALM · Eclipse · Docker · JUnit · QF-Test"
+          },
+          {
+            name: "WebApp - Microservices Architecture",
+            details: [
+              "Designed and implemented an application based on 11 microservices, providing an innovative service-oriented solution.",
+              "Played a key role in requirement analysis, technical solution proposals, and development of core modules such as identity management, messaging, and document handling.",
+              "Continuously monitored and optimized the application to ensure optimal performance."
+            ],
+            technicalEnvironment: "React · Java · Spring Boot · Spring Security · PostgreSQL · Hibernate · Maven · Kafka"
+          }
+        ]
+      },
+      {
+        company: "KEYRUS",
+        period: "February 2021 - October 2021",
+        position: "Software Engineering Intern",
+        projects: [
+          {
+            name: "End of Study Internship - E-commerce Platform & AI Tools",
+            details: [
+              "Developed a complete e-commerce platform (back-office and front-office) using Liferay for the backend and Angular for the frontend, enabling seamless product and order management.",
+              "Implemented an intelligent chatbot using the RASA framework for automated customer support.",
+              "Developed a recommendation engine based on three approaches: collaborative filtering, content-based filtering, and basket analysis to enhance user experience."
+            ],
+            technicalEnvironment: "Liferay DXP · OSGI · JEE · Hibernate · Service Builder (Liferay) · JAX-RS · Angular · Python · RASA · Flask · Bitbucket"
+          }
+        ]
+      },
+      {
+        company: "GOLDENMARKET",
+        period: "May 2020 - August 2020",
+        position: "Software Development Intern",
+        projects: [
+          {
+            name: "Medicinal Plants Information Exchange Platform",
+            details: [
+              "Developed a web platform for exchanging information about medicinal plants, allowing users to share and access herbal remedy knowledge.",
+              "Used Java and JSF (JavaServer Faces) for the frontend, providing a dynamic and interactive user interface."
+            ],
+            technicalEnvironment: "Java · Spring MVC · JSF · Eclipse · MySQL · HTML/CSS · Maven · Selenium"
           }
         ]
       }
@@ -194,6 +238,10 @@ export const cvData: Record<string, CVData> = {
       {
         category: "Outils de Test et d'Automatisation",
         items: ["Maven", "Selenium", "Jsoup"]
+      },
+      {
+        category: "Langues",
+        items: ["Français", "Anglais"]
       }
     ],
     experience: [
@@ -238,6 +286,45 @@ export const cvData: Record<string, CVData> = {
               "Rédaction d'une documentation complète et formation technique de l'équipe pour assurer une adoption fluide des nouvelles fonctionnalités."
             ],
             technicalEnvironment: "Java · Groovy · JavaFX · Git · Bitbucket · HP ALM · Eclipse · Docker · JUnit · QF-Test"
+          },{
+            name: "WebApp - Architecture à base de microservices",
+            details: [
+              "Conception et mise en œuvre d'une application basée sur 11 microservices, offrant une solution innovante orientée services.",
+              "Participation clé à l’analyse des besoins, à la proposition de solutions techniques et au développement de modules essentiels tels que la gestion des identités, la messagerie et la gestion documentaire.",
+              "Surveillance continue et optimisation de l’application afin de garantir des performances optimales."
+            ],
+            technicalEnvironment: "React · Java · Spring Boot · Spring Security · PostgreSQL · Hibernate · Maven · Kafka"
+          }
+        ]
+      },
+      {
+        company: "KEYRUS",
+        period: "Février 2021 - Octobre 2021",
+        position: "Stagiaire en ingénierie logicielle",
+        projects: [
+          {
+            name: "Stage de fin d’études - Plateforme e-commerce & outils d’IA",
+            details: [
+              "Développement complet d’une plateforme e-commerce (back-office et front-office) en utilisant Liferay pour le backend et Angular pour le frontend, permettant une gestion fluide des produits et des commandes.",
+              "Mise en place d’un chatbot intelligent avec le framework RASA pour un support client automatisé.",
+              "Développement d’un moteur de recommandation basé sur trois approches : filtrage collaboratif, filtrage basé sur le contenu et analyse de panier pour améliorer l’expérience utilisateur."
+            ],
+            technicalEnvironment: "Liferay DXP · OSGI · JEE · Hibernate · Service Builder (Liferay) · JAX-RS · Angular · Python · RASA · Flask · Bitbucket"
+          }
+        ]
+      },
+      {
+        company: "GOLDENMARKET",
+        period: "Mai 2020 - Août 2020",
+        position: "Stagiaire en développement logiciel",
+        projects: [
+          {
+            name: "Plateforme d’échange d’informations sur les plantes médicinales",
+            details: [
+              "Développement d’une plateforme web pour l’échange d’informations sur les plantes médicinales, permettant aux utilisateurs de partager et consulter des connaissances en phytothérapie.",
+              "Utilisation de Java et JSF (JavaServer Faces) pour le frontend, offrant une interface utilisateur dynamique et interactive."
+            ],
+            technicalEnvironment: "Java · Spring MVC · JSF · Eclipse · MySQL · HTML/CSS · Maven · Selenium"
           }
         ]
       }
