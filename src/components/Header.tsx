@@ -1,4 +1,4 @@
-import image from '../data/avatar.png';
+import image from '../data/ba3be3i.png';
 import React from 'react';
 import { Globe, Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
 import { PersonalInfo } from '../data/cv';
@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ personalInfo, language, onLanguageChang
               transition={{duration: 0.8, type: "spring", bounce: 0.4}}
               src={image}
               alt="Profile"
-              className="w-52 h-52 shadow-green-400/20 hover:scale-105 transition-transform duration-300 object-cover"
+              className="w-80 h-90 shadow-green-400/20 hover:scale-105 transition-transform duration-300 object-cover"
           />
 
           <div className="flex-1">
