@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { cvData } from './data/cv';
 import Header from './components/Header';
 import Skills from './components/Skills';
@@ -9,10 +9,11 @@ import LinksAndProjects from "./components/LinksAndProjects.tsx";
 import Navigation from "./components/Navigation.tsx";
 
 function App() {
-  const [language, setLanguage] = useState('en');
+    const [language, setLanguage] = useState('en');
     const [error, setError] = useState<string | null>(null);
-
+    const canvasRef = useRef<HTMLCanvasElement>(null);
     const data = cvData[language];
+
     const linksAndProjects = [
         {
             title: 'Upwork – Google Maps Places API - search review, place name and category',
@@ -33,10 +34,72 @@ function App() {
             rating:5
         }
     ];
+
+    // MATRIX BACKGROUND LOGIC
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const javaSnippets = [
+            'public class HelloWorld {',
+            '  public static void main(String[] args) {',
+            '    System.out.println("Hello, World!");',
+            '  }',
+            '}',
+            '[INFO] Building MyApp 1.0-SNAPSHOT',
+            '[INFO] --- maven-compiler-plugin ---',
+            '[INFO] Compilation successful',
+            'Starting Spring Boot Application...',
+            'Tomcat started on port(s): 8080',
+            'Application started successfully'
+        ];
+
+        const fontSize = 16;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = new Array(columns).fill(1);
+
+        const draw = () => {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#00FF00";
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = javaSnippets[Math.floor(Math.random() * javaSnippets.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height || Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        };
+
+        const interval = setInterval(draw, 100);
+
+        const handleResize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            clearInterval(interval);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    // IP Tracking
     useEffect(() => {
         const fetchVisitorInfo = async () => {
             try {
-                // Step 1: Fetch visitor data from ipinfo.io
                 const response = await fetch('https://ipinfo.io/json');
                 if (!response.ok) throw new Error('Failed to fetch visitor information');
                 const data = await response.json();
@@ -50,50 +113,54 @@ function App() {
                     timezone: data.timezone,
                 };
 
-                // Step 2: POST the visitor info to your backend
                 const postResponse = await fetch('https://firasportfolio-6f57312343c9.herokuapp.com/api/visitors', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(visitorInfo),
                 });
 
-                if (!postResponse.ok) {
-                    throw new Error('Failed to send visitor data');
-                }
+                if (!postResponse.ok) throw new Error('Failed to send visitor data');
                 console.log('Visitor data sent successfully!');
             } catch (err) {
                 console.error(err);
                 setError('Unable to retrieve or send visitor information');
-            } finally {
-                setLoading(false);
             }
         };
 
-        fetchVisitorInfo(); // Calling the function
+        fetchVisitorInfo();
     }, []);
-  return (
-    <div className="min-h-screen bg-black">
-      <Header 
-        personalInfo={data.personalInfo}
-        language={language}
-        onLanguageChange={setLanguage}
-      />
-        <Navigation/>
-      <motion.main 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-5xl mx-auto px-4 md:px-8 py-8"
-      >
-        <Skills skills={data.skills} />
-        <Experience experiences={data.experience} />
-        <Education education={data.education} />
-          <LinksAndProjects items={linksAndProjects} />
-      </motion.main>
-    </div>
-  );
+
+    return (
+        <div className="min-h-screen relative overflow-hidden">
+            {/* Matrix Canvas Background */}
+            <canvas
+                ref={canvasRef}
+                className="fixed top-0 left-0 w-full h-full z-0"
+                style={{ backgroundColor: 'black' }}
+            />
+
+            {/* Foreground Content */}
+            <div className="relative z-10">
+                <Header
+                    personalInfo={data.personalInfo}
+                    language={language}
+                    onLanguageChange={setLanguage}
+                />
+                <Navigation />
+                <motion.main
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="max-w-5xl mx-auto px-4 md:px-8 py-8"
+                >
+                    <Skills skills={data.skills} />
+                    <Experience experiences={data.experience} />
+                    <Education education={data.education} />
+                    <LinksAndProjects items={linksAndProjects} />
+                </motion.main>
+            </div>
+        </div>
+    );
 }
 
 export default App;
