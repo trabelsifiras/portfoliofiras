@@ -42,57 +42,87 @@ function App() {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const javaSnippets = [
-            'public class HelloWorld {',
-            '  public static void main(String[] args) {',
-            '    System.out.println("Hello, World!");',
-            '  }',
-            '}',
-            '[INFO] Building MyApp 1.0-SNAPSHOT',
-            '[INFO] --- maven-compiler-plugin ---',
-            '[INFO] Compilation successful',
-            'Starting Spring Boot Application...',
-            'Tomcat started on port(s): 8080',
-            'Application started successfully'
-        ];
-
-        const fontSize = 16;
-        const columns = Math.floor(canvas.width / fontSize);
-        const drops = new Array(columns).fill(1);
-
-        const draw = () => {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = "#00FF00";
-            ctx.font = `${fontSize}px monospace`;
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = javaSnippets[Math.floor(Math.random() * javaSnippets.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height || Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        };
-
-        const interval = setInterval(draw, 100);
-
-        const handleResize = () => {
+        // Set up the canvas dimensions
+        const resizeCanvas = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         };
+        resizeCanvas();
 
-        window.addEventListener('resize', handleResize);
+        // window.addEventListener('resize', resizeCanvas);
+
+        const javaSnippets = [
+            "",
+            " :: Spring Boot ::                (v3.4.4)",
+            "",
+            "2025-04-11T14:49:47.336+01:00  INFO 29972 --- [firasportfolio] [           main] o.f.p.f.FirasportfolioApplication        : Starting FirasportfolioApplication using Java 17.0.14 with PID 29972 ",
+            "2025-04-11T14:49:47.338+01:00  INFO 29972 --- [firasportfolio] [           main] o.f.p.f.FirasportfolioApplication        : No active profile set, falling back to 1 default profile: \"default\"",
+            "2025-04-11T14:49:47.806+01:00  INFO 29972 --- [firasportfolio] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.",
+            "2025-04-11T14:49:47.843+01:00  INFO 29972 --- [firasportfolio] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 1 JPA repository interface.",
+            "2025-04-11T14:49:48.108+01:00  INFO 29972 --- [firasportfolio] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)",
+            "2025-04-11T14:49:48.116+01:00  INFO 29972 --- [firasportfolio] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]",
+            "2025-04-11T14:49:48.116+01:00  INFO 29972 --- [firasportfolio] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]",
+            "2025-04-11T14:49:48.149+01:00  INFO 29972 --- [firasportfolio] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext",
+            "2025-04-11T14:49:48.150+01:00  INFO 29972 --- [firasportfolio] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 770 ms",
+            "2025-04-11T14:49:48.250+01:00  INFO 29972 --- [firasportfolio] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]",
+            "2025-04-11T14:49:48.290+01:00  INFO 29972 --- [firasportfolio] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final",
+            "2025-04-11T14:49:48.314+01:00  INFO 29972 --- [firasportfolio] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled",
+            "2025-04-11T14:49:48.528+01:00  INFO 29972 --- [firasportfolio] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer",
+            "2025-04-11T14:49:48.552+01:00  INFO 29972 --- [firasportfolio] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...",
+            "2025-04-11T14:49:49.767+01:00  INFO 29972 --- [firasportfolio] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1fd37440",
+            "2025-04-11T14:49:49.769+01:00  INFO 29972 --- [firasportfolio] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.",
+            "2025-04-11T14:49:49.891+01:00  WARN 29972 --- [firasportfolio] [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)",
+            "2025-04-11T14:49:49.891+01:00  WARN 29972 --- [firasportfolio] [           main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead",
+            "2025-04-11T14:49:49.903+01:00  INFO 29972 --- [firasportfolio] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:",
+            "\tDatabase JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']",
+            "\tDatabase driver: undefined/unknown",
+            "\tDatabase version: 8.0",
+            "\tAutocommit mode: undefined/unknown",
+            "\tIsolation level: undefined/unknown",
+            "\tMinimum pool size: undefined/unknown",
+            "\tMaximum pool size: undefined/unknown",
+            "2025-04-11T14:49:50.457+01:00  INFO 29972 --- [firasportfolio] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)",
+            "2025-04-11T14:49:50.756+01:00  INFO 29972 --- [firasportfolio] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'",
+
+        ];
+
+        const fontSize = 18;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = new Array(columns).fill(0);
+
+        // Used for throttling the draw loop
+        let frameCount = 7;
+        const frameSkip = 7; // Increase to slow down more (e.g. 4 or 5)
+
+        const draw = () => {
+            frameCount++;
+            if (frameCount % frameSkip === 0) {
+                ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = "#00FF00";
+                ctx.font = `${fontSize}px monospace`;
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = javaSnippets[Math.floor(Math.random() * javaSnippets.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    // Reset drop to top randomly or if out of screen
+                    if (drops[i] * fontSize > canvas.height || Math.random() > 0.99) {
+                        drops[i] = 0;
+                    } else {
+                        drops[i]++;
+                    }
+                }
+            }
+
+            requestAnimationFrame(draw);
+        };
+
+        requestAnimationFrame(draw);
 
         return () => {
-            clearInterval(interval);
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('resize', resizeCanvas);
         };
     }, []);
 
